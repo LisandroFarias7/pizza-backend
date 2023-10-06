@@ -19,4 +19,5 @@ export class Client {
 
     @Column()
     telefono: number
+    
 }

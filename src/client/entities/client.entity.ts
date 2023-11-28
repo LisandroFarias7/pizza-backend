@@ -1,23 +1,26 @@
 /* eslint-disable prettier/prettier */
+import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
 
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm"
-
-
-@Entity({name: 'cliente'})
+@Entity()
 export class Client {
-    @PrimaryGeneratedColumn()
-    id: string
+  @PrimaryGeneratedColumn()
+  id: string;
 
-    @Column()
-    nombre: string
+  @Column()
+  name: string;
 
-    @Column()
-    apellido: string
+  @Column()
+  lastname: string;
 
-    @Column()
-    domicilio: string
+  @Column()
+  email: string;
 
-    @Column()
-    telefono: number
-    
+  @Column()
+  mobile: string;
+
+  @Column()
+  address: string;
+
+  // @OneToMany(() => Order, (order) => order.client)
+  // orders: Order[]
 }

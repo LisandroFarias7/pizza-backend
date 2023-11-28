@@ -1,8 +1,9 @@
 /* eslint-disable prettier/prettier */
 export class CreateMenuDto {
-    id?: string
+    id?: string;
     titulo: string
     descripcion: string
     precio: number
     imageUrl: string
+    cantidad?: number
 }

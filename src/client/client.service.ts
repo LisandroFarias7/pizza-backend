@@ -1,7 +1,5 @@
 /* eslint-disable prettier/prettier */
 import { Injectable } from '@nestjs/common';
-import { CreateClientDto } from './dto/create-client.dto';
-import { UpdateClientDto } from './dto/update-client.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Client } from './entities/client.entity';
 import { Repository } from 'typeorm';
@@ -13,28 +11,25 @@ export class ClientService {
 
   }
 
-  create(createClientDto: CreateClientDto) {
-    const newClient = this.clientRepository.create(createClientDto)
-    return this.clientRepository.save(newClient);
+
+  async createUser(userData: Partial<Client>): Promise<Client> {
+    
+    
+    const newUser = this.clientRepository.create(userData);
+    return await this.clientRepository.save(newUser);
   }
 
-  getAll() {
-    return this.clientRepository.find();
+  async getUsers(): Promise<Client[]>{
+    return await this.clientRepository.find()
   }
 
-  findOne(id: string) {
-    return this.clientRepository.findOne({
-      where: {
-        id
-      }
-    });
+  async getUser(id: string) {
+    return await this.clientRepository.findOneBy({
+      id
+    })
   }
 
-  update(id: string, updateClientDto: UpdateClientDto) {
-    return this.clientRepository.update({id}, updateClientDto);
-  }
-
-  remove(id: string) {
-    this.clientRepository.delete(id);
+  async deleteUser(id: string) {
+    return await this.clientRepository.delete({id})
   }
 }

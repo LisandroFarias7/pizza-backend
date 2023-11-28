@@ -1,9 +1,9 @@
 /* eslint-disable prettier/prettier */
 
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm"
+import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 
-@Entity({name: 'menu'})
-export class Menu {
+@Entity({name: 'order'})
+export class Order {
     @PrimaryGeneratedColumn()
     id: string
 
@@ -14,6 +14,9 @@ export class Menu {
     descripcion: string
 
     @Column()
+    client_id: string;
+
+    @Column()
     precio: number;
 
     @Column()
@@ -21,4 +24,7 @@ export class Menu {
 
     @Column()
     cantidad: number;
+
+    // @ManyToOne(() => Client, (client) => client.orders)
+    // client: Client;
 }

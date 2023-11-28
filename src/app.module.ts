@@ -7,6 +7,7 @@ import { ClientModule } from './client/client.module';
 import { MenuModule } from './menu/menu.module';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { OrdersModule } from './orders/orders.module';
 
 
 @Module({
@@ -24,7 +25,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       database: process.env.DB_DATABASE,
       autoLoadEntities: true,
       synchronize: true
-  })],
+  }),
+    OrdersModule],
   controllers: [AppController],
   providers: [AppService,
     {
